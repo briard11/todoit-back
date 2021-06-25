@@ -3,6 +3,8 @@ const bcryptjs = require("bcryptjs");
 
 const Usuario = require("../models/usuario.model");
 
+const options = { new: true };
+
 const usuariosGet = async (req = request, res = response) => {
   const { limite = 10, desde = 0 } = req.query;
   const query = { estado: true };
@@ -41,7 +43,7 @@ const usuariosPut = async (req = request, res = response) => {
     resto.password = bcryptjs.hashSync(password, salt);
   }
 
-  const usuario = await Usuario.findByIdAndUpdate(id, resto);
+  const usuario = await Usuario.findByIdAndUpdate(id, resto, options);
 
   res.json(usuario);
 };
@@ -54,7 +56,12 @@ const usuariosPatch = (req = request, res = response) => {
 
 const usuariosDelete = async (req = request, res = response) => {
   const { id } = req.params;
-  const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
+  const usuario = await Usuario.findByIdAndUpdate(
+    id,
+    { estado: false },
+    options
+  );
+
   res.json(usuario);
 };
 
