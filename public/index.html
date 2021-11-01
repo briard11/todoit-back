@@ -9,7 +9,7 @@
     <script src="main.js"></script>
     <meta
       name="google-signin-client_id"
-      content="349031596130-mi632l7nr81lk003c7h1vc3ggu1c6tui.apps.googleusercontent.com"
+      content="349031596130-d80i4thmosp0lsmq7skgefhd1kksvh4v.apps.googleusercontent.com"
     />
   </head>
   <body>
@@ -22,7 +22,7 @@
     <script>
       let url = window.location.hostname.includes("localhost")
         ? "http://localhost:8080/api/auth/google"
-        : "https://shop-back-node.herokuapp.com/api/auth/google";
+        : "https://todoit-back.herokuapp.com/api/auth/google";
       function onSignIn(googleUser) {
         let profile = googleUser.getBasicProfile();
         console.log("ID: " + profile.getId()); // Do not send to your backend! Use an ID token instead.

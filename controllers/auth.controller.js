@@ -51,7 +51,7 @@ const googleSignin = async (req, res = response) => {
     const { id_token } = req.body;
     const { correo, nombre, img } = await googleVerify(id_token);
     let usuario = await Usuario.findOne({ correo });
-    
+
     if (!usuario) {
       // Creacion
       const data = {
@@ -61,11 +61,11 @@ const googleSignin = async (req, res = response) => {
         img,
         google: true,
       };
-      
+
       usuario = new Usuario(data);
       await usuario.save();
     }
-    
+
     if (!usuario.estado) {
       res.status(401).json({ msg: "Hable con el admin, usuario bloqueado" });
     }
@@ -75,7 +75,7 @@ const googleSignin = async (req, res = response) => {
 
     res.json({
       msg: "todo ok",
-      token
+      token,
     });
   } catch (error) {
     res.status(400).json({ msg: "Token de Google no es valido" });
