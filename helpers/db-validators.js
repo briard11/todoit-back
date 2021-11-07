@@ -1,5 +1,6 @@
 const Role = require("../models/role.model");
 const Usuario = require("../models/usuario.model");
+const Tarea = require("../models/tarea.model");
 
 const esRoleValido = async (rol = "") => {
   const existeRol = await Role.findOne({ rol });
@@ -23,8 +24,8 @@ const existeUsuarioPorId = async (id) => {
 };
 
 const existeTareaPorId = async (id) => {
-  const existeCategoria = await Categoria.findById(id);
-  if (!existeCategoria) {
+  const existeTarea = await Tarea.findById(id);
+  if (!existeTarea) {
     throw new Error(`El id: ${id}, no existe`);
   }
 };
