@@ -42,7 +42,6 @@ router.put(
     validarJWT,
     check("id", "No es un ID valido").isMongoId(),
     check("id").custom(existeTareaPorId),
-    check("rol").custom(esRoleValido),
     validarCampos,
   ],
   tareasPut
@@ -55,7 +54,6 @@ router.delete(
     validarJWT,
     check("id", "No es un ID valido").isMongoId(),
     check("id").custom(existeTareaPorId),
-    check("rol").custom(esRoleValido),
     validarCampos,
   ],
   tareasDelete
