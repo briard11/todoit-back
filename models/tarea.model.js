@@ -14,7 +14,7 @@ const TareaSchema = Schema({
   },
   estadoTarea: {
     type: Boolean,
-    default: true,
+    default: false,
   },
   estado: {
     type: Boolean,
